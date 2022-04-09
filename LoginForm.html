@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>Login Form</h1>
+    <div class="loginForm">
+        <form class="form">
+            <!-- firstName -->
+            <div class="firstName">
+                <label for="firstName" >First Name:
+                    <input type="text" id="firstName" placeholder="enter the firstname" />
+                </label>
+            </div>
+            <!-- lastName -->
+            <div class="lastName">
+                <label for="lastName">Last Name:
+                    <input type="text" id="lastName" placeholder="enter the lastname" />
+                </label>
+            </div>
+            <!-- userName -->
+            <div class="userName">
+                <label for="userName">User Name:
+                    <input type="text" id="userName" placeholder="enter the username" />
+                </label>
+            </div>
+
+            <!-- password -->
+            <div class="newPassword">
+                <label for="newPassword">Enter New Password:
+                    <input type="password" placeholder="Password">
+                </label>
+            </div>
+            <div class="confirmPassword">
+                <label for="confirmPassword">Confirm Password:
+                    <input type="password" placeholder="Password">
+                </label>
+            </div>
+            <!-- gender -->
+            <div class="gender">
+                Gender:
+                <label for="101">
+                    <input type="radio" value="gender" name="gender" id="101">Male
+                </label>
+                <label for="102">
+                    <input type="radio" value="gender" name="gender" id="102">female
+                </label>
+                <label for="103">
+                    <input type="radio" value="gender" name="gender" id="103">other
+                </label>
+            </div>
+            <!-- degree -->
+            <div class="degree">
+                Degree:
+                <label for="M-tech">
+                    <input type="checkbox" value="M-tech" name="degree" id="101"> M-tech
+                </label>
+                <label for="B-tech">
+                    <input type="checkbox" value="B-tech" name="degree" id="102"> B-tech
+                </label>
+                <label for="MCA">
+                    <input type="checkbox" value="MCA" name="degree" id="103"> MCA
+                </label>
+                <label for="BCA">
+                    <input type="checkbox" value="BCA" name="degree" id="104"> BCA
+                </label>
+            </div>
+            <!-- address -->
+            <div class="address">
+                <label for="">Address:</label>
+                <textarea name="feedback" id="101" cols="30" rows="3"
+                    placeholder="please enter your address here"></textarea>
+
+            </div>
+            <div class="city">
+                <label for="city">Select your City:</label>
+                <select name="city" id="101">
+                    <option value="Dehli">Dehli</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Nasik">Nasik</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                </select>
+            </div>
+            <!-- button -->
+            <div class="button">
+                <input type="submit" value="Submit form" id="submit">
+                <input type="reset" value="Reset form" id="reset">
+            </div>
+    </div>
+    <!-- script -->
+    <script>
+        let firstName;
+        function getFirstName(){
+            // alert(this.value)
+            firstName=this.value
+            // console.log(firstName)
+        }
+        let firstNameId = document.getElementById("firstName")
+        firstNameId.addEventListener("change",getFirstName)
+        
+
+        let lastName;
+        function getLastName(){
+            lastName=this.value
+            // console.log(lastName)
+        }
+        let lastNameId = document.getElementById("lastName")
+        lastNameId.addEventListener("change",getLastName)
+
+        let userName;
+        function getUserName(){
+            userName=this.value
+            // console.log(userName)
+        }
+        let userNameId = document.getElementById("userName")
+        userNameId.addEventListener("change",getUserName)
+        // console.log(this.firstName,this.lastName,this.userName)
+        
+        
+        function onSubmit() {
+            event.preventDefault()
+        //    storing details localstorage
+            // localStorage.setItem("firstName",firstName)
+            // localStorage.setItem("lastName",lastName)
+            // localStorage.setItem("userName",userName)
+            // // storing details  sessionstorage
+            // sessionStorage.setItem("firstName",firstName)
+            // sessionStorage.setItem("lastName",lastName)
+            // sessionStorage.setItem("userName",userName)
+            // removing detains from local or session storage
+            // localStorage.removeItem("firstName")
+            // sessionStorage.removeItem("firstName")
+            let userDetails={
+            firstNameKey:firstName,
+            lastNameKey:lastName,
+            userNameKey:userName 
+        }
+            // console.log(userDetails)
+            // converting object to string 
+            localStorage.setItem("userDetails",JSON.stringify(userDetails))
+            let userDetailsFromStorage = localStorage.getItem("userDetails")
+            // converting string to object 
+            console.log(JSON.parse(userDetailsFromStorage));
+
+
+            
+            alert("Form Submitted sucessfully")
+            // getting details from local storage
+            // let firstNameValue = localStorage.getItem("firstName")
+            // console.log("firstNameValue",firstNameValue)
+            
+        }
+
+        let button = document.getElementById("submit")
+        // button.addEventListener("click", onSubmit)
+        button.onclick = onSubmit;
+
+        
+        // firstNameId.removeEventListener()
+        // lastNameId.removeEventListener()
+        // userNameId.removeEventListener()
+    </script>
+    </form>
+    </div>
+</body>
+
+</html>
